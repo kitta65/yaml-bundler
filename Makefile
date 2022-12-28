@@ -6,5 +6,5 @@ test:
 	poetry run pytest
 
 .PHONY: fmt
-test:
+fmt:
 	poetry run black .
