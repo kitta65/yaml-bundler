@@ -1,9 +1,9 @@
 .PHONY: test
 test:
-	poetry run pytest && \
-	poetry run mypy ./**/*.py --strict && \
 	poetry run black . --check && \
-	poetry run flake8
+	poetry run flake8 && \
+	poetry run mypy ./**/*.py --strict && \
+	poetry run pytest
 
 .PHONY: fmt
 test:
