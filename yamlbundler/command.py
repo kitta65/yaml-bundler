@@ -15,7 +15,7 @@ from yamlbundler.include import Include as _  # noqa: F401
 @dataclass(eq=True)
 class Args:
     input: Path
-    output: Path
+    output: Path | None
 
 
 def run() -> None:
@@ -32,8 +32,13 @@ def main(args: Args) -> object:
     ):
         obj = yaml.full_load(f)
 
-    with open(args.output, "w") as f:
-        f.write(yaml.dump(obj))
+    yamlstr = yaml.dump(obj)
+
+    if args.output is None:
+        print(yamlstr)
+    else:
+        with open(args.output, "w") as f:
+            f.write(yamlstr)
 
     return obj
 
@@ -47,9 +52,7 @@ def parse_args(test_args: list[str] | None = None) -> Args:
     parser.add_argument("-i", "--inplace", action="store_true")
     args = parser.parse_args(test_args)
 
-    if (args.inplace and args.output is not None) or (
-        not args.inplace and args.output is None
-    ):
+    if args.inplace and args.output is not None:
         raise YAMLBundlerException("either one of -o or -i must be specified")
 
     return Args(

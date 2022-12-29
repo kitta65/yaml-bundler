@@ -38,7 +38,6 @@ def test_parse_args_valid(args: list[str], expected: Args) -> None:
     "args",
     [
         ["filepath1", "-i", "-o", "filepath2"],
-        ["filepath1"],
     ],
 )
 def test_parse_args_invalid(args: list[str]) -> None:
