@@ -38,12 +38,14 @@ def parse_args(test_args: list[str] | None = None) -> Args:
         prog="YAML Bundler", description="Handle !include tag and bundle YAML files."
     )
     parser.add_argument("input", type=Path)
-    parser.add_argument("-i", "--inplace", action="store_true")
     parser.add_argument("-o", "--output", type=Path)
+    parser.add_argument("-i", "--inplace", action="store_true")
     args = parser.parse_args(test_args)
 
-    if not args.inplace and args.ouput is None:
-        raise YAMLBundlerException("specify --output or --inplace parameter")
+    if (args.inplace and args.output is not None) or (
+        not args.inplace and args.output is None
+    ):
+        raise YAMLBundlerException("either one of -o or -i must be specified")
 
     return Args(
         input=args.input,
