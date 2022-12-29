@@ -10,7 +10,6 @@ from yamlbundler.exception import YAMLBundlerException
 from yamlbundler.util import is_list_of_dict
 
 
-
 @dataclass
 class Parameter:
     filepath: str

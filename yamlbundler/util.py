@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 # TODO disallow Any in other files
 from typing import Any, Generic, TypeVar
 
