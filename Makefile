@@ -12,3 +12,9 @@ fmt:
 .PHONY: setup
 setup:
 	./scripts/setup.sh
+
+.PHONY: publish
+publish:
+	./scripts/version.py && \
+	poetry build && \
+	poetry publish --password ${PYPI_PASSWORD}
