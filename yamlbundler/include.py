@@ -9,7 +9,6 @@ import jsonpath_ng
 from yamlbundler.exception import YAMLBundlerException
 from yamlbundler.util import is_list_of_dict
 
-# N = TypeVar('N', bound=yaml.nodes.Node)
 
 
 @dataclass

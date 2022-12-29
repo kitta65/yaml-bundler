@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from pathlib import Path
 import argparse
 
+import yaml
+
 
 @dataclass
 class Args:
