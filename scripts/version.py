@@ -11,7 +11,10 @@ def toml_version() -> str:
     with open(PROJECT_ROOT / "./pyproject.toml", "rb") as f:
         data = tomllib.load(f)
 
-    return data["tool"]["poetry"]["version"]
+    res = data["tool"]["poetry"]["version"]
+    assert isinstance(res, str)
+
+    return res
 
 
 if __name__ == "__main__":
