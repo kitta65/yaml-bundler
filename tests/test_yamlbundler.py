@@ -1,5 +1,5 @@
-from yamlbundler import command
+# from yamlbundler import command
 
 
 def test_main() -> None:
-    command.main()
+    print("hello")

@@ -1,6 +1,6 @@
 .PHONY: test
 test:
-	poetry run black . --check && \
+	export MYPYPATH=$(CURDIR)/stubs && \
 	poetry run flake8 && \
 	poetry run mypy ./**/*.py --strict && \
 	poetry run pytest
