@@ -18,6 +18,11 @@ class Args:
     output: Path
 
 
+def run() -> None:
+    args = parse_args()
+    main(args)
+
+
 def main(args: Args) -> object:
     abspath = args.input.resolve()
 
@@ -54,5 +59,4 @@ def parse_args(test_args: list[str] | None = None) -> Args:
 
 
 if __name__ == "__main__":
-    args = parse_args()
-    main(args)
+    run()

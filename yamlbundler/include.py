@@ -80,6 +80,7 @@ def node2pram_pair(node: yaml.nodes.Node) -> Parameter:
 
 def param_pair2obj(param: Parameter) -> object:
     filepath = os.path.abspath(param.filepath)
+    # TODO avoid chdir
     with (
         open(filepath, "r") as f,
         contextlib.chdir(os.path.dirname(filepath)),

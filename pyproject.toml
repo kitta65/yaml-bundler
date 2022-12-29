@@ -5,6 +5,9 @@ description = ""
 authors = ["dr666m1 <skndr666m1@gmail.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+yamlbundler = "yamlbundler.command:run"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pyyaml = "^6.0"
