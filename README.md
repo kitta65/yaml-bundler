@@ -25,15 +25,16 @@ c: !include
   jsonpath: $.foo
 
 # include multiple files
+# Array elements are flattened.
 d: !include
 - filepath: ./sub1.yaml
 - filepath: ./sub2.yaml
 
 # include multiple files
+# If all of them are map elements, they are merged into a single map.
 e: !include
 - filepath: ./sub1.yaml
 - filepath: ./sub3.yaml
-
 ```
 ```yaml
 # ./sub1.yaml
@@ -50,17 +51,30 @@ foo: bar
 # ./sub3.yaml
 hoge: !include
   # relative path from the parent directory of sub3.yaml (not main.yaml)
-  filename: ./sub2.yaml
+  filepath: ./sub2.yaml
   jsonpath: $[0]
 ```
 
 Then, run this command.
 The result is shown in your terminal as STDOUT.
+Comments in original YAML are removed.
 
 ```bash
 yamlbundler ./main.yaml
 
-# TODO paste the result
+# a:
+#   foo: bar
+# b:
+# - one
+# - two
+# c: bar
+# d:
+# - foo: bar
+# - one
+# - two
+# e:
+#   foo: bar
+#   hoge: one
 ```
 
 You can save the result as a new file using `--output` parameter.
