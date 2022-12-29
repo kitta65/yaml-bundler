@@ -18,7 +18,7 @@ if __name__ == "__main__":
     tag_version = os.getenv("GITHUB_REF")
 
     if tag_version is None:
-        raise Exception("Do not run this script locally.")
+        raise Exception("You have to export GITHUB_REF environment variable.")
     tag_version = tag_version.replace("refs/tags/", "")
 
     assert toml_version() == tag_version

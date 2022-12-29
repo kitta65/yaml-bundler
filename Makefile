@@ -17,4 +17,4 @@ setup:
 publish:
 	./scripts/version.py && \
 	poetry build && \
-	poetry publish --password ${PYPI_PASSWORD}
+	poetry publish --password ${PYPI_PASSWORD} --username dr666m1

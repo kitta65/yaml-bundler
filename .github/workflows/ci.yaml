@@ -23,15 +23,7 @@ jobs:
         id: setup-python
         with:
           python-version: '3.11'
-      - name: build
-        run: poetry build
-      - uses: actions/upload-artifact@v3
-        with:
-          name: package
-          path: ./dist
-      - name: check tag
-        run: test $(./scripts/version.py) = ${GITHUB_REF#refs/tags}
       - name: publish
-        run: poetry publish --username dr666m1 --password "$PYPI_PASSWORD"
         env:
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: make publish
