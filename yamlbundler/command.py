@@ -7,6 +7,10 @@ import yaml
 
 from yamlbundler.exception import YAMLBundlerException
 
+# metaclass magic is used to register a constructor for Include.
+# you can also use yaml.add_constructor().
+from yamlbundler.include import Include as _  # noqa: F401
+
 
 @dataclass(eq=True)
 class Args:
