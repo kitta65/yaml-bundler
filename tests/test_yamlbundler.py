@@ -63,3 +63,12 @@ def test_main_valid(path: Path, tmp_path: Path) -> None:
     with open(path.parent / "expected" / path.name, "r") as f:
         expected = yaml.full_load(f)
     assert actual == expected
+
+
+@pytest.mark.parametrize(
+    "path",
+    list_input_files(valid=False),
+)
+def test_main_invalid(path: Path, tmp_path: Path) -> None:
+    with pytest.raises(YAMLBundlerException):
+        main(Args(input=path, output=tmp_path / path.name))
