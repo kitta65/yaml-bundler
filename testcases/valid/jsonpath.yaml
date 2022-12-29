@@ -1,0 +1,12 @@
+foo: !include
+  filepath: ./sub/jsonpath.yaml
+  jsonpath: $.foo.bar
+qux: !include
+  filepath: ./sub/jsonpath.yaml
+  jsonpath: $.qux
+grault: !include
+  filepath: ./sub/jsonpath.yaml
+  jsonpath: $.qux[0]
+garply: !include
+  filepath: ./sub/jsonpath.yaml
+  jsonpath: $.qux[*]

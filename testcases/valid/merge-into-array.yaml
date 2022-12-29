@@ -1,0 +1,8 @@
+foo: !include
+  - filepath: ./sub/merge-into-array.yaml
+    jsonpath: '$.foo'
+  - filepath: ./sub/merge-into-array.yaml
+    jsonpath: '$.foo'
+  - filepath: ./sub/merge-into-array.yaml
+    jsonpath: '$.foo[0]'
+  - filepath: ./sub/merge-into-array.yaml
