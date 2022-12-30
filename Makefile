@@ -9,10 +9,6 @@ test:
 fmt:
 	poetry run black .
 
-.PHONY: setup
-setup:
-	./scripts/setup.sh
-
 .PHONY: publish
 publish:
 	./scripts/version.py && \
